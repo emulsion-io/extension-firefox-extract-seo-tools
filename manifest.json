@@ -1,10 +1,10 @@
 {
    "manifest_version": 2,
-   "name": "Copieur de ALT",
-   "version": "1.0",
+   "name": "Extract SEO Tools",
+   "version": "2.0",
    "author": "Fabrice Simonet <fabrice@emulsion.io>",
    "homepage_url": "https://emulsion.io",
-   "description": "Copie le texte alternatif d'une image",
+   "description": "Copie le title, meta description et le texte alternatif d'une image",
    "permissions": ["contextMenus", "activeTab", "clipboardWrite", "tabs"],
    "background": {
        "scripts": ["background.js"],

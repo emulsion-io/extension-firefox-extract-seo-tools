@@ -1,15 +1,27 @@
+
+// Ajouter l'option "Copier le ALT" sous le menu parent
 browser.contextMenus.create({
-   id: "copy-alt-text",
-   title: "Copier le ALT",
-   contexts: ["image"],
-      icons: {
-      "16": "icons/copy-alt-16.png",
-      "32": "icons/copy-alt-32.png"
-   }
+    id: "copy-alt-text",
+    title: "Copier le ALT",
+    contexts: ["image"]
+});
+
+// Ajouter l'option "Copier le Title" sous le menu parent
+browser.contextMenus.create({
+    id: "copy-title-text",
+    title: "Copier le Title",
+    contexts: ["all"]
+});
+
+// Ajouter l'option "Copier la meta description" sous le menu parent
+browser.contextMenus.create({
+    id: "copy-meta-description-text",
+    title: "Copier la meta description",
+    contexts: ["all"]
 });
 
 browser.contextMenus.onClicked.addListener(async (info, tab) => {
-   if (info.menuItemId === "copy-alt-text") {
+    if (info.menuItemId === "copy-alt-text") {
        browser.tabs.executeScript(tab.id, {
            code: `
                (function() {
@@ -34,4 +46,29 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
            `
        });
    }
+
+   if (info.menuItemId === "copy-title-text") {
+        browser.tabs.executeScript(tab.id, {
+            code: `
+                (function() {
+                    let pageTitle = document.title;
+                    navigator.clipboard.writeText(pageTitle || '');
+                    alert('Title copié : ' + pageTitle);
+                })();
+            `
+        });
+    }
+
+    if (info.menuItemId === "copy-meta-description-text") {
+        browser.tabs.executeScript(tab.id, {
+            code: `
+                (function() {
+                    let metaDescription = document.querySelector('meta[name="description"]');
+                    let content = metaDescription ? metaDescription.content : '';
+                    navigator.clipboard.writeText(content || '');
+                    alert('Meta description copiée : ' + content);
+                })();
+            `
+        });
+    }
 });
