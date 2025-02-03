@@ -1,4 +1,4 @@
-# extention-firefox-extract-seo-tools
+# extension-firefox-extract-seo-tools
 
 Copie le title, meta description et le texte alternatif d'une image
 
@@ -8,4 +8,4 @@ https://addons.mozilla.org/fr/firefox/addon/extract-seo-tools/
 
 ## Voir la version Chrome ici : 
 
-https://github.com/emulsion-io/extention-chrome-extract-seo-tools
+https://github.com/emulsion-io/extension-chrome-extract-seo-tools
